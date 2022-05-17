@@ -45,8 +45,8 @@ const PokePage = ({data ,pid}:any) => {
                 pid ? pid : ''
               }.png`}
               alt=""
-               width={`120`}
-              height={`120`}
+               width={`150`}
+              height={`150`}
             />
           </div>
         
@@ -60,7 +60,8 @@ const PokePage = ({data ,pid}:any) => {
               Height : {data.height}
               <br />
               Weight : {data.weight}
-              <br />
+      
+              
             </p>
           </a>
         </div>
@@ -76,5 +77,7 @@ export async function getServerSideProps(_context: any) {
   const URL = `https://pokeapi.co/api/v2/pokemon/${pid}`
   const response = await fetch(URL)
   const data = await response.json()
+  console.log(data);
+  
   return {props: {data,pid}}
 }

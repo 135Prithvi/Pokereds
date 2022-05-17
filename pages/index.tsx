@@ -18,16 +18,13 @@ const Home: NextPage = ({data}:any) => {
                  height={`120`}
               />
             </a>
-            <div className="p-5">
+            <div className="pb-5 pr-5 pl-5">
               <a>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {pokemon?.name}
                 </h5>
               </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Here are the biggest enterprise technology acquisitions of 2021
-                so far, in reverse chronological order.
-              </p>
+              
               
             </div>
           </div></Link>
@@ -41,10 +38,8 @@ export default Home
 
 export async function getServerSideProps(_context: any) {
   
-  const URL = `https://pokeapi.co/api/v2/pokemon/`
+  const URL = `https://pokeapi.co/api/v2/pokemon/?limit=494`
   const response = await fetch(URL)
   const data = await response.json()
-  console.log(data.results);
-  
   return {props: {data}}
 }
