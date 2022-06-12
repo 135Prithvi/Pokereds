@@ -8,5 +8,6 @@ module.exports = {
       center: true,
     },
   },
+  darkMode: ['class', '[data-mode="dark"]'],
   plugins: [require('flowbite/plugin')],
 }

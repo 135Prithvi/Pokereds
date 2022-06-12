@@ -2,17 +2,18 @@ import Link from 'next/link'
 
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-
+import { useTheme } from 'next-themes'
 function Navbar() {
   const router = useRouter()
   const [showModal, setShowModal] = useState('')
-  
+  const { theme, setTheme } = useTheme()
+  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light')
   return (
     <div className="sticky top-0 border-b-2 border-t-2 shadow-lg ">
-      <nav className="rounded border-gray-200 bg-white px-2 py-2.5 dark:bg-gray-800 sm:px-4">
+      <nav className="rounded dark:border-gray-900 border-gray-200  bg-white px-2 py-2.5 dark:bg-gray-800 sm:px-4">
         <div className="container mx-auto flex flex-wrap items-center justify-between md:flex-row">
           <div className="flex items-center">
-            <span className="self-center whitespace-nowrap text-xl font-semibold   dark:text-white">
+            <span className="ml-2 self-center whitespace-nowrap text-xl font-semibold dark:text-white text-black  sm:ml-0">
               Pokereds
             </span>
           </div>
@@ -74,6 +75,9 @@ function Navbar() {
                   Weather
                 </a>
               </Link>
+              <a className="mx-2 mb-1  block rounded-lg bg-gradient-to-br from-green-400 to-blue-600 px-5 py-2 pr-4 pl-3 text-center text-sm font-medium text-white hover:bg-gradient-to-bl focus:outline-none focus:ring-4  focus:ring-green-200 dark:focus:ring-green-800">
+                <button onClick={toggleTheme}>Change Theme</button>
+              </a>
             </ul>
           </div>
         </div>
