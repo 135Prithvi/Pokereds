@@ -13,6 +13,7 @@ export default function Weather({ data, city }: any) {
             width={100}
             height={100}
             className="rounded-xl bg-slate-200"
+            alt="rick roll"
           />
           <div className="pt-3">
             <a className="mr-auto ml-auto w-full text-center ">
