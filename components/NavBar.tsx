@@ -7,13 +7,13 @@ function Navbar() {
   const router = useRouter()
   const [showModal, setShowModal] = useState('')
   const { theme, setTheme } = useTheme()
-  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light')
+  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
   return (
-    <div className="sticky top-0 border-b-2 border-t-2 shadow-lg ">
-      <nav className="rounded dark:border-gray-900 border-gray-200  bg-white px-2 py-2.5 dark:bg-gray-800 sm:px-4">
+    <div className="sticky top-0 border-b-2 border-t-2 shadow-lg dark:border-gray-900 ">
+      <nav className="rounded border-gray-200 bg-white  px-2 py-2.5 dark:border-gray-900 dark:bg-gray-900 sm:px-4">
         <div className="container mx-auto flex flex-wrap items-center justify-between md:flex-row">
           <div className="flex items-center">
-            <span className="ml-2 self-center whitespace-nowrap text-xl font-semibold dark:text-white text-black  sm:ml-0">
+            <span className="ml-2 self-center whitespace-nowrap text-xl font-semibold text-black dark:text-gray-200  sm:ml-0">
               Pokereds
             </span>
           </div>
@@ -63,7 +63,7 @@ function Navbar() {
             <ul className=" mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-2 md:text-sm md:font-medium">
               <Link href="/">
                 <a
-                  className="mx-2 mb-1  block max-w-sm rounded-lg bg-gradient-to-br from-green-400 to-blue-600 px-5 py-2 pr-4 pl-3 text-center text-sm font-medium text-white hover:bg-gradient-to-bl focus:outline-none focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800"
+                  className="mx-2 mb-1  block rounded-lg bg-gradient-to-br from-green-400 to-blue-600 p-2 px-3 text-center text-sm font-medium text-white hover:bg-gradient-to-bl  focus:outline-none focus:ring-4 focus:ring-green-200 dark:from-green-300 dark:to-blue-400  dark:text-teal-900 dark:focus:ring-green-800"
                   aria-current="page"
                 >
                   Home
@@ -71,12 +71,38 @@ function Navbar() {
               </Link>
 
               <Link href="/weather">
-                <a className="mx-2 mb-1  block rounded-lg bg-gradient-to-br from-green-400 to-blue-600 px-5 py-2 pr-4 pl-3 text-center text-sm font-medium text-white hover:bg-gradient-to-bl focus:outline-none focus:ring-4  focus:ring-green-200 dark:focus:ring-green-800">
+                <a className="mx-2 mb-1  block rounded-lg bg-gradient-to-br from-green-400 to-blue-600  p-2 px-3 text-center text-sm font-medium text-white hover:bg-gradient-to-bl  focus:outline-none focus:ring-4 focus:ring-green-200 dark:from-green-300 dark:to-blue-400  dark:text-teal-900 dark:focus:ring-green-800">
                   Weather
                 </a>
               </Link>
-              <a className="mx-2 mb-1  block rounded-lg bg-gradient-to-br from-green-400 to-blue-600 px-5 py-2 pr-4 pl-3 text-center text-sm font-medium text-white hover:bg-gradient-to-bl focus:outline-none focus:ring-4  focus:ring-green-200 dark:focus:ring-green-800">
-                <button onClick={toggleTheme}>Change Theme</button>
+              <a onClick={toggleTheme} className="mx-2 mb-1 sm:mb-0 sm:mx-0 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm text-center p-2 ">
+                <button  >
+                  {theme == 'light' ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className=" w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                      />
+                    </svg>
+                  )}
+                </button>
               </a>
             </ul>
           </div>

@@ -3,9 +3,9 @@ import Image from 'next/image'
 const PokePage = ({ data, pid }: any) => {
   return (
     <>
-      <div className="mt-20 grid justify-center sm:mt-0 sm:h-screen sm:items-center">
+      <div className="grid justify-center sm:mt-0 h-[80vh] sm:h-[90vh] items-center">
         <div className="  max-w-xs place-items-center sm:max-w-lg ">
-          <a className="text-md mx-2 mb-1 block rounded-lg border-2 border-gray-300 bg-white py-5 px-5 pr-4 pl-3  text-center  font-medium shadow-xl  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 sm:block">
+          <a className="text-md mx-2 mb-1 block rounded-lg border-2 border-gray-300 bg-white py-5 px-5 pr-4 pl-3  text-center  font-medium shadow-xl  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800 sm:block">
             <div className="mx-auto flex sm:inline-flex sm:w-full ">
               <Image
                 className="m-auto h-1/2 w-1/2 rounded-t-lg sm:h-max  sm:w-max"
@@ -48,13 +48,13 @@ const PokePage = ({ data, pid }: any) => {
               />
             </div>
 
-            <div className="pt-3">
+            <div className="pt-3 ">
               <a className="mr-auto ml-auto w-full text-center ">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900   dark:text-white">
                   {(data.name ? data.name : '').toUpperCase()}
                 </h5>
 
-                <p className="  font-medium text-gray-700 dark:text-gray-400">
+                <p className="  font-medium text-gray-700 dark:text-white dark:hover:text-gray-400">
                   Height : {data.height} <strong>m</strong>
                   <br />
                   Weight : {data.weight} <strong>Kgs</strong>

@@ -8,7 +8,7 @@ export default function Search({ Data }: any) {
 
   function searchList() {
     return (
-      <div className="container h-[55vh] overflow-y-auto">
+      <div className="container mt-2 h-[55vh] overflow-y-auto ">
         <SearchList Data={Data} query={search} />
       </div>
     )
@@ -23,7 +23,7 @@ export default function Search({ Data }: any) {
           }}
         >
           <input
-            className=" max-w-sm rounded-lg border-2 sm:w-full"
+            className=" max-w-sm rounded-lg border-2 dark:bg-black hover:bg-gray-100 dark:hover:bg-slate-900 sm:w-full"
             type="search"
             placeholder="Search"
             onChange={(e: any) => {

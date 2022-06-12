@@ -14,7 +14,7 @@ const Home: NextPage = ({ data }: any) => {
         {data.results.map((pokemon: any, _index: any) => {
           return (
             <Link href="/[id]" as={`/${_index + 1}`} key={pokemon?.name}>
-              <div className=" max-w-full cursor-pointer rounded-lg border-2 border-gray-200  bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
+              <div className=" max-w-full cursor-pointer rounded-lg border-2 border-gray-200  bg-white shadow-md dark:border-gray-700 dark:bg-gray-700">
                 <a>
                   <Image
                     className="m-auto rounded-lg "
