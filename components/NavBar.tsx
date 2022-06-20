@@ -9,8 +9,8 @@ function Navbar() {
   const { theme, setTheme } = useTheme()
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
   return (
-    <div className="sticky top-0 border-b-2 border-t-2 shadow-lg dark:border-gray-900 ">
-      <nav className="rounded border-gray-200 bg-white  px-2 py-2.5 dark:border-gray-900 dark:bg-gray-900 sm:px-4">
+    <div className=" top-0 border-b-2 border-t-2 shadow-lg dark:border-gray-900 ">
+      <nav className="rounded  border-gray-200 bg-white  px-2 py-2.5 dark:border-gray-900 dark:bg-gray-900 sm:px-4">
         <div className="container mx-auto flex flex-wrap items-center justify-between md:flex-row">
           <div className="flex items-center">
             <span className="ml-2 self-center whitespace-nowrap text-xl font-semibold text-black dark:text-gray-200  sm:ml-0">
