@@ -8,8 +8,17 @@ function Navbar() {
   const [showModal, setShowModal] = useState('')
   const { theme, setTheme } = useTheme()
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
+  const [showButton, setShowButton] = useState(true)
+
+  // This function will scroll the window to the top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // for smoothly scrolling
+    })
+  }
   return (
-    <div className=" top-0 border-b-2 border-t-2 shadow-lg dark:border-gray-900 ">
+    <div className="sticky top-0 border-b-2 border-t-2 shadow-lg dark:border-gray-800 ">
       <nav className="rounded  border-gray-200 bg-white  px-2 py-2.5 dark:border-gray-900 dark:bg-gray-900 sm:px-4">
         <div className="container mx-auto flex flex-wrap items-center justify-between md:flex-row">
           <div className="flex items-center">
@@ -75,8 +84,40 @@ function Navbar() {
                   Weather
                 </a>
               </Link>
-              <a onClick={toggleTheme} className="mx-2 mb-1 sm:mb-0 sm:mx-0 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm text-center p-2 ">
-                <button  >
+              <Link href="/House">
+                <a className="mx-2 mb-1  block rounded-lg bg-gradient-to-br from-green-400 to-blue-600  p-2 px-3 text-center text-sm font-medium text-white hover:bg-gradient-to-bl  focus:outline-none focus:ring-4 focus:ring-green-200 dark:from-green-300 dark:to-blue-400  dark:text-teal-900 dark:focus:ring-green-800">
+                  Portfolio
+                </a>
+              </Link>
+           
+                {/* from-green-400 to-blue-600    hover:bg-gradient-to-bl  focus:outline-none focus:ring-4 focus:ring-green-200 dark:from-green-300 dark:to-blue-400  dark:text-teal-900 dark:focus:ring-green-800 */}
+                {showButton && (
+                  <a
+                    onClick={scrollToTop}
+                    className="mx-2 mb-1 block rounded-lg text-white p-2 px-3 text-center text-sm font-medium bg-blue-700  hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 10l7-7m0 0l7 7m-7-7v18"
+                      ></path>
+                    </svg>
+                  </a>
+                )}
+              
+              <a
+                onClick={toggleTheme}
+                className="mx-2 mb-1 rounded-lg p-2 text-center text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700 sm:mx-0 sm:mb-0 "
+              >
+                <button>
                   {theme == 'light' ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

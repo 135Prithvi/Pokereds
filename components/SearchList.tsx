@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 export default function SearchList({ query, Data }: any) {
   return (
-    <div className="mx-2 sm:mx-4">
+    <div className="mx-2 sm:mx-4 ">
       <div className="container">
         <div className=" my-5 space-y-5 text-center sm:grid sm:grid-cols-2 sm:gap-x-8  sm:gap-y-5 sm:space-y-0">
-          {Data.results
+          {Data
             .filter((pokemon: any, _index: any) => {
               if (query === '') {
                 return pokemon

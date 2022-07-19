@@ -1,8 +1,12 @@
 import SearchIcon from '@mui/icons-material/Search'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
-import SearchList from './SearchList'
+// import SearchList from './SearchList'
+import dynamic from 'next/dynamic'
 
+const SearchList = dynamic(() => import('./SearchList') as any, {
+  ssr: false,
+})
 export default function Search({ Data }: any) {
   const [search, setSearch] = useState('')
 

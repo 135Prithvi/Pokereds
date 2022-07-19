@@ -3,8 +3,8 @@ import Image from 'next/image'
 const PokePage = ({ data, pid }: any) => {
   return (
     <>
-      <div className="grid justify-center sm:mt-0 h-[80vh] sm:h-[90vh] items-center">
-        <div className="  max-w-xs place-items-center sm:max-w-lg ">
+      <div className="grid justify-center sm:mt-0 h-[90vh]  items-center">
+        <div className="  max-w-[17rem] place-items-center sm:max-w-lg ">
           <a className="text-md mx-2 mb-1 block rounded-lg border-2 border-gray-300 bg-white py-5 px-5 pr-4 pl-3  text-center  font-medium shadow-xl  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800 sm:block">
             <div className="mx-auto flex sm:inline-flex sm:w-full ">
               <Image

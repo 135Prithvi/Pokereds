@@ -5,9 +5,11 @@ import { useEffect, useState } from 'react'
 import LoadingBar from 'react-top-loading-bar'
 import { useRouter } from 'next/router'
 import { ThemeProvider } from 'next-themes'
-import { darkTheme } from '../stitches.config'
+// import { darkTheme } from '../stitches.config'
+
 
 function MyApp({ Component, pageProps }: AppProps) {
+
   const AnyComponent = Component as any
   const [progress, setProgress] = useState(0)
   const router = useRouter()
@@ -35,6 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Navbar />
         <AnyComponent {...pageProps} />
       </ThemeProvider>
+    
     </>
   )
 }

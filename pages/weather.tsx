@@ -1,10 +1,14 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-export default function Weather({ data, city }: any) {
-  const router = useRouter()
+import Head from 'next/head'
+export default function Weather({ data }: any) {
 
   return (
+   
     <div className=" grid h-[90vh] items-center justify-center sm:mt-0">
+       <Head>
+        <title>Your Local Weather app</title>
+       </Head>
       <div className=" w-screen  max-w-xs sm:max-w-lg ">
         <a className="text-md mx-2 mb-1 block rounded-lg border-4 border-gray-200 bg-white py-5 px-5 pr-4 pl-3  text-center  font-medium shadow-xl  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:bg-gray-800 sm:block">
           <div className="mx-auto flex sm:inline-flex sm:w-full  "></div>
