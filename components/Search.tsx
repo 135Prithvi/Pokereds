@@ -4,7 +4,7 @@ import { useState } from 'react'
 // import SearchList from './SearchList'
 import dynamic from 'next/dynamic'
 
-const SearchList = dynamic(() => import('./SearchList') as any, {
+const SearchList = dynamic(() => import('./SearchList'), {
   ssr: false,
 })
 export default function Search({ Data }: any) {

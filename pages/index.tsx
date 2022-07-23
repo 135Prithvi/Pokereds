@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from 'next/dynamic'
 
-const Search = dynamic(() => import("../components/Search") as any, {
+const Search = dynamic(() => import("../components/Search") , {
   ssr: false,
 })
 const Home: NextPage = ({ data }: any) => {
