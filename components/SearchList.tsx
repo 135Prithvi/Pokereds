@@ -4,20 +4,19 @@ import Image from 'next/image'
 
 export default function SearchList({ query, Data }: any) {
   return (
-    <div className="mx-2 sm:mx-4 ">
-      <div className="container">
-        <div className=" my-5 space-y-5 text-center sm:grid sm:grid-cols-2 sm:gap-x-8  sm:gap-y-5 sm:space-y-0">
-          {Data
-            .filter((pokemon: any, _index: any) => {
+    <div className={`container mt-2 h-auto overflow-y-auto `}>
+      <div className="mx-2 sm:mx-4 ">
+        <div className="container">
+          <div className=" my-5 space-y-5 text-center sm:grid sm:grid-cols-2 sm:gap-x-8  sm:gap-y-5 sm:space-y-0">
+            {Data.filter((pokemon: any, _index: any) => {
               if (query === '') {
                 return pokemon
-              } else if (
-                pokemon?.name.toLowerCase().includes(query.toLowerCase())
-              ) {
-                return { pokemon, _index }
               }
-            })
-            .map((pokemon: any, _index: any) => (
+              if (!pokemon?.name.toLowerCase().includes(query.toLowerCase()))
+                return null
+
+              return { pokemon, _index }
+            }).map((pokemon: any, _index: any) => (
               <div className="" key={_index}>
                 <Link
                   href="/[id]"
@@ -52,6 +51,7 @@ export default function SearchList({ query, Data }: any) {
                 </Link>
               </div>
             ))}
+          </div>
         </div>
       </div>
     </div>

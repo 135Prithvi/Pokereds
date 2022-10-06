@@ -3,6 +3,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useTheme } from 'next-themes'
+
+const routes = [
+  { title: 'Home', path: '/' },
+  { title: 'Weather', path: '/weather' },
+  { title: 'Portfolio', path: '/House' },
+]
 function Navbar() {
   const router = useRouter()
   const [showModal, setShowModal] = useState('')
@@ -20,9 +26,9 @@ function Navbar() {
   return (
     <div className="sticky top-0 border-b-2 border-t-2 shadow-lg dark:border-gray-800 ">
       <nav className="rounded  border-gray-200 bg-white  px-2 py-2.5 dark:border-gray-900 dark:bg-gray-900 sm:px-4">
-        <div className="container mx-auto flex flex-wrap items-center justify-between md:flex-row">
+        <div className=" flex flex-wrap items-center justify-center md:flex-row">
           <div className="flex items-center">
-            <span className="ml-2 self-center whitespace-nowrap text-xl font-semibold text-black dark:text-gray-200  sm:ml-0">
+            <span className="ml-2 self-center whitespace-nowrap font-sans text-2xl font-bold tracking-wide text-black dark:text-gray-200  sm:ml-0">
               Pokereds
             </span>
           </div>
@@ -70,53 +76,41 @@ function Navbar() {
             id="mobile-menu"
           >
             <ul className=" mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-2 md:text-sm md:font-medium">
-              <Link href="/">
-                <a
-                  className="mx-2 mb-1  block rounded-lg bg-gradient-to-br from-green-400 to-blue-600 p-2 px-3 text-center text-sm font-medium text-white hover:bg-gradient-to-bl  focus:outline-none focus:ring-4 focus:ring-green-200 dark:from-green-300 dark:to-blue-400  dark:text-teal-900 dark:focus:ring-green-800"
-                  aria-current="page"
-                >
-                  Home
-                </a>
-              </Link>
-
-              <Link href="/weather">
-                <a className="mx-2 mb-1  block rounded-lg bg-gradient-to-br from-green-400 to-blue-600  p-2 px-3 text-center text-sm font-medium text-white hover:bg-gradient-to-bl  focus:outline-none focus:ring-4 focus:ring-green-200 dark:from-green-300 dark:to-blue-400  dark:text-teal-900 dark:focus:ring-green-800">
-                  Weather
-                </a>
-              </Link>
-              <Link href="/House">
-                <a className="mx-2 mb-1  block rounded-lg bg-gradient-to-br from-green-400 to-blue-600  p-2 px-3 text-center text-sm font-medium text-white hover:bg-gradient-to-bl  focus:outline-none focus:ring-4 focus:ring-green-200 dark:from-green-300 dark:to-blue-400  dark:text-teal-900 dark:focus:ring-green-800">
-                  Portfolio
-                </a>
-              </Link>
-           
-                {/* from-green-400 to-blue-600    hover:bg-gradient-to-bl  focus:outline-none focus:ring-4 focus:ring-green-200 dark:from-green-300 dark:to-blue-400  dark:text-teal-900 dark:focus:ring-green-800 */}
-                {showButton && (
+              {routes.map((route) => (
+                <Link href={route.path} key={route.title}>
                   <a
-                    onClick={scrollToTop}
-                    className="mx-2 mb-1 block rounded-lg text-white p-2 px-3 text-center text-sm font-medium bg-blue-700  hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className={
+                      router.pathname === route.path
+                        ? `xxx tracking-wider text-black dark:text-white `
+                        : `xxx tracking-wider text-neutral-400`
+                    }
+                    aria-current="page"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M5 10l7-7m0 0l7 7m-7-7v18"
-                      ></path>
-                    </svg>
+                    {route.title}
                   </a>
-                )}
-              
-              <a
-                onClick={toggleTheme}
-                className="mx-2 mb-1 rounded-lg p-2 text-center text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700 sm:mx-0 sm:mb-0 "
-              >
+                </Link>
+              ))}
+
+              {showButton && (
+                <a onClick={scrollToTop} className="xxx">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 10l7-7m0 0l7 7m-7-7v18"
+                    ></path>
+                  </svg>
+                </a>
+              )}
+
+              <a onClick={toggleTheme} className="xxx">
                 <button>
                   {theme == 'light' ? (
                     <svg

@@ -11,11 +11,7 @@ export default function Search({ Data }: any) {
   const [search, setSearch] = useState('')
 
   function searchList() {
-    return (
-      <div className="container mt-2 h-[55vh] overflow-y-auto ">
-        <SearchList Data={Data} query={search} />
-      </div>
-    )
+    return <SearchList Data={Data} query={search} />
   }
   return (
     <>
@@ -27,7 +23,7 @@ export default function Search({ Data }: any) {
           }}
         >
           <input
-            className=" max-w-sm rounded-lg border-2 dark:bg-black hover:bg-gray-100 dark:hover:bg-slate-900 sm:w-full"
+            className=" max-w-sm rounded-lg border-2 outline-hidden transition-transform hover:translate-x-1 hover:-translate-y-1 hover:bg-gray-100 hover:text-lg dark:bg-black dark:hover:bg-slate-900 sm:w-full "
             type="search"
             placeholder="Search"
             onChange={(e: any) => {

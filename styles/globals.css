@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components {
+  .xxx {
+    @apply ml-[.75em]  flex items-center justify-center  p-[.75em] text-lg font-bold active:text-gray-700;
+  }
+}

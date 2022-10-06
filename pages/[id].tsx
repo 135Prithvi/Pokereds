@@ -1,69 +1,74 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import Image from 'next/image'
+import { GetStaticProps } from 'next/types'
+import graphQLClient from '../graphQL/graphQLClient'
+import { GET_ONE_POKE } from '../graphQL/quir'
+// import img from 'next/img'
 const PokePage = ({ data, pid }: any) => {
+ 
+
   return (
     <>
-      <div className="grid justify-center sm:mt-0 h-[90vh]  items-center">
-        <div className="  max-w-[17rem] place-items-center sm:max-w-lg ">
-          <a className="text-md mx-2 mb-1 block rounded-lg border-2 border-gray-300 bg-white py-5 px-5 pr-4 pl-3  text-center  font-medium shadow-xl  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:hover:bg-gray-800 sm:block">
-            <div className="mx-auto flex sm:inline-flex sm:w-full ">
-              <Image
-                className="m-auto h-1/2 w-1/2 rounded-t-lg sm:h-max  sm:w-max"
+      <div className="mt-10  overflow-hidden">
+        <div className=" max-w-sm sm:max-w-none  ">
+          <a className="border- mx-2 flex h-full w-full flex-col items-center  justify-center">
+            <div className="  flex items-center justify-center  ">
+              <img
+                className="sm:aspect-auto  sm:h-36 sm:w-36"
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
                   pid ? pid : ''
                 }.png`}
                 alt=""
-                width={`120`}
-                height={`120`}
               />
-              <ArrowForwardIcon className="my-auto " />
-              <Image
-                className="m-auto h-1/2 w-1/2 rounded-t-lg sm:h-max sm:w-max"
+              <ArrowForwardIcon className="hidden sm:block " />
+              <img
+                className="sm:aspect-auto sm:h-36 sm:w-36"
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${
                   pid ? pid : ''
                 }.png`}
                 alt=""
-                width={`120`}
-                height={`120`}
               />
-              <ArrowForwardIcon className="my-auto " />
-              <Image
-                className="m-auto h-1/2 w-1/2 rounded-t-lg sm:h-max sm:w-max"
+              <ArrowForwardIcon className="hidden sm:block " />
+              <img
+                className="sm:aspect-auto sm:h-36 sm:w-36"
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${
                   pid ? pid : ''
                 }.png`}
                 alt=""
-                width={`120`}
-                height={`120`}
               />
-              <ArrowForwardIcon className="my-auto" />
-              <Image
-                className="sm:w-maxrounded-t-lg m-auto h-1/2 w-1/2 sm:h-max"
+              <ArrowForwardIcon className="hidden sm:block" />
+              <img
+                className="sm:aspect-auto sm:h-36 sm:w-36"
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${
                   pid ? pid : ''
                 }.png`}
                 alt=""
-                width={`150`}
-                height={`150`}
               />
             </div>
-
-            <div className="pt-3 ">
-              <a className="mr-auto ml-auto w-full text-center ">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900   dark:text-white">
-                  {(data.name ? data.name : '').toUpperCase()}
-                </h5>
-
-                <p className="  font-medium text-gray-700 dark:text-white dark:hover:text-gray-400">
-                  Height : {data.height} <strong>m</strong>
-                  <br />
-                  Weight : {data.weight} <strong>Kgs</strong>
-                  <br />
-                  Ability :
-                </p>
-              </a>
-            </div>
           </a>
+          <div className="mt-10 grid justify-center ">
+            <h5 className="mx-3 mb-5  text-center text-2xl font-medium">
+              {(data && data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].name).toUpperCase()}
+            </h5>
+            <a className=" flex flex-col  space-y-3 sm:flex-row sm:space-y-1">
+              <span className={`w-full p-3 font-sans text-base sm:mx-3 sm:w-auto sm:p-5 sm:text-xl ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'grass' && 'bg-emerald-300'} ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'fire' && 'bg-rose-400'} ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'water' && 'bg-blue-300'} rounded-full`}>
+                {' '}
+                Height : {data.height} <strong>m</strong>
+              </span>
+              <span className={`w-full p-3 font-sans text-base sm:mx-3 sm:w-auto sm:p-5 sm:text-xl ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'grass' && 'bg-emerald-300'} ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'fire' && 'bg-rose-400'} ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'water' && 'bg-blue-300'} rounded-full`}>
+                {' '}
+                Weight : {data.weight} <strong>Kgs</strong>
+              </span>
+
+              <span className={`w-full p-3 font-sans text-base sm:mx-3 sm:w-auto sm:p-5 sm:text-xl ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'grass' && 'bg-emerald-300' } ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'fire' && 'bg-rose-400'} ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'water' && 'bg-blue-300' } rounded-full`}>
+                Ability : {data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemonabilities[0].pokemon_v2_ability.name},{' '}
+                {data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemonabilities[1].pokemon_v2_ability.name}
+              </span>
+              <span className={`w-full p-3 font-sans text-base sm:mx-3 sm:w-auto sm:p-5 sm:text-xl ${   data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'grass' && 'bg-emerald-300' } ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'fire' && 'bg-rose-400'} ${data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name == 'water' && 'bg-blue-300' } rounded-full`} >
+                Types : {data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0] && data.pokemon_v2_pokemonspecies[0].pokemon_v2_pokemons[0].pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
+                {/* {data.types[1] && ',' + data.types[1].type.name} */}
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </>
@@ -71,12 +76,24 @@ const PokePage = ({ data, pid }: any) => {
 }
 export default PokePage
 
+// export async function getServerSideProps(_context: any) {
+//   const pid = _context.query.id
+//   const URL = `${process.env.GET_ONE_PokeApi}${pid}`
+//   const response = await fetch(URL)
+//   const data = await response.json()
+//   // console.log(data);
+
+//   return { props: { data, pid } }
+// }
 export async function getServerSideProps(_context: any) {
   const pid = _context.query.id
-  const URL = `${process.env.GET_ONE_PokeApi}${pid}`
-  const response = await fetch(URL)
-  const data = await response.json()
-  // console.log(data);
+  const variables = {
+    ii: pid,
+  }
+  const data = await graphQLClient.request(GET_ONE_POKE,variables);
+console.log(data);
 
-  return { props: { data, pid } }
+  return {
+    props: { data,pid}
+  };
 }
