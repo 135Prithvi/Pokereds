@@ -41,7 +41,9 @@ function Navbar() {
           >
             <span className="sr-only">Open main menu</span>
             <svg
-              className={`  h-6 w-6`}
+              className={`${
+                showModal == 'visible' ? 'hidden' : 'visible'
+              }  h-6 w-6`}
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +94,7 @@ function Navbar() {
               ))}
 
               {showButton && (
-                <a onClick={scrollToTop} className="xxx">
+                <button onClick={scrollToTop} aria-name='scrollToTop' className="xxx">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5"
@@ -107,11 +109,11 @@ function Navbar() {
                       d="M5 10l7-7m0 0l7 7m-7-7v18"
                     ></path>
                   </svg>
-                </a>
+                </button>
               )}
 
               <a onClick={toggleTheme} className="xxx">
-                <button>
+                <button aria-name='toggle'>
                   {theme == 'light' ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

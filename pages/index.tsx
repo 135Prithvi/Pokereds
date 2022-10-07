@@ -1,21 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import type { NextPage } from 'next'
 // import Search from "../components/Search";
-import Image from 'next/image'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-
+import Image from 'next/future/image'
 const Search = dynamic(() => import('../components/Search'), {
   ssr: false,
 })
 const Home: NextPage = ({ data }: any) => {
   const [pokes, setPokes] = useState(data.results)
   const [fetchurl, setfetchurl] = useState(
-    'https://pokeapi.co/api/v2/pokemon?&limit=47&offset=10'
+    'https://pokeapi.co/api/v2/pokemon?&limit=39&offset=8'
   )
-
-  
 
   // This function will scroll the window to the top
   // console.log();
@@ -25,8 +22,6 @@ const Home: NextPage = ({ data }: any) => {
     console.log(newPokes)
     setPokes(pokes.concat(newPokes.results))
     setfetchurl(newPokes.next)
-
-
   }
 
   return (
@@ -50,12 +45,15 @@ const Home: NextPage = ({ data }: any) => {
               <Link href="/[id]" as={`/${_index + 1}`} key={pokemon?.name}>
                 <div className=" flex cursor-pointer flex-row  justify-between rounded-lg border-2 border-gray-200 bg-white  px-5 shadow-md dark:border-gray-700 dark:bg-gray-700">
                   <a>
-                    <img
+                    <Image
                       className="aspect-auto h-36 w-36 "
                       src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
                         _index + 1
                       }.png`}
                       alt=""
+                      priority
+                      width={'144'}
+                      height={'144'}
                     />
                   </a>
                   <div className="mx-auto my-auto">
@@ -75,8 +73,9 @@ const Home: NextPage = ({ data }: any) => {
   )
 }
 export default Home
-export async function getServerSideProps(_context: any) {
-  const URL = `https://pokeapi.co/api/v2/pokemon/?limit=10`
+export async function getStaticProps() {
+  
+  const URL = `https://pokeapi.co/api/v2/pokemon/?limit=8`
   const response = await fetch(URL)
   const data = await response.json()
   // console.log(data);

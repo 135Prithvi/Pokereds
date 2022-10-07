@@ -1,4 +1,4 @@
-import SearchIcon from '@mui/icons-material/Search'
+
 import { useState } from 'react'
 
 // import SearchList from './SearchList'
@@ -23,16 +23,14 @@ export default function Search({ Data }: any) {
           }}
         >
           <input
-            className=" max-w-sm rounded-lg border-2 outline-hidden transition-transform hover:translate-x-1 hover:-translate-y-1 hover:bg-gray-100 hover:text-lg dark:bg-black dark:hover:bg-slate-900 sm:w-full "
+            className=" max-w-sm rounded-lg border-2 outline-hidden transition-transform hover:translate-x-1 hover:-translate-y-1 hover:bg-gray-100 hover:text-lg dark:bg-black dark:hover:bg-slate-900 flex-grow sm:flex-none sm:w-full "
             type="search"
             placeholder="Search"
             onChange={(e: any) => {
               setSearch(e.target.value)
             }}
           />
-          <button className="mx-4 rounded-lg bg-gradient-to-br from-green-400 to-blue-600 px-[0.33rem] text-center text-lg  font-medium text-white hover:bg-gradient-to-bl focus:outline-none focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800 sm:py-2.5 sm:px-2">
-            <SearchIcon />
-          </button>
+          
         </form>
         <div>{/* showModal Will go here */}</div>
         {search ? searchList() : null}
